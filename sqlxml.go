@@ -203,7 +203,7 @@ func loadDatabasesFile(opt *Options) (map[string]*sqlx.DB, error) {
 		return nil, errors.New("no available database")
 	}
 
-	var databaseMap map[string]*sqlx.DB
+	databaseMap := make(map[string]*sqlx.DB)
 	for _, dbXml := range data.Databases {
 		if opt.Env != "" && opt.Env != dbXml.Env {
 			continue
