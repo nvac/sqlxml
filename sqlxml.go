@@ -244,8 +244,7 @@ func loadDatabasesFile(opt *Options) (map[string]*sqlx.DB, error) {
 }
 
 func loadScriptsGlobFiles(opt *Options) (map[string]string, error) {
-	var scriptMap map[string]string
-
+	scriptMap := make(map[string]string)
 	scriptFilePathList, _ := filepath.Glob(opt.ScriptsGlobFiles)
 	for _, scriptFilePath := range scriptFilePathList {
 		fileContent, err := ioutil.ReadFile(scriptFilePath)
